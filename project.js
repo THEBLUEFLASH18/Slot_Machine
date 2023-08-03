@@ -20,4 +20,9 @@ const deposit = () => {
     }
 };
 
-deposit();
+/*Even though i already used const depositAmount, i can use it again because the first one was a local 
+scope declaration while this one below is a global scope declaration */
+
+const depositAmount = deposit();
+console.log(depositAmount)
+
