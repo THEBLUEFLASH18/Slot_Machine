@@ -20,9 +20,26 @@ const deposit = () => {
     }
 };
 
+
+const getNumberOfLines = () =>{
+    while(true){
+        const lines = prompt("Enter the number of lines to (1-3): ")
+        const numberOfLines = parseFloat(lines)
+
+        if(isNaN(numberOfLines) || numberOfLines <= 0 || numberOfLines > 3){
+            alert("There is an improper value of lines being bet on!")
+        }
+        else{
+            return numberOfLines
+        }
+    }
+}
+
 /*Even though i already used const depositAmount, i can use it again because the first one was a local 
 scope declaration while this one below is a global scope declaration */
 
 const depositAmount = deposit();
-console.log(depositAmount)
+const numberOfLines = getNumberOfLines();
+
+
 
