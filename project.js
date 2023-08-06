@@ -73,6 +73,31 @@ const getBet = function(balance, lines){
 /*Even though i already used const depositAmount, i can use it again because the first one was a local 
 scope declaration while this one below is a global scope declaration */
 
+const spin = ()=>{
+    const symbols = [];
+    for(const [symbol, count] of Object.entries(SYMBOLS_COUNT)){
+        for(let i = 0; i < count;i++){
+            symbols.push(symbol)
+        }
+    }
+
+    const reels = [[],[],[]]
+    for(let i = 0; i < COLS; i++){
+        const reelSymbols = [...symbols]
+        for(let j = 0; j < ROWS; j++){
+            const random = Math.floor(Math.random() * reelSymbols.length)
+            const selectedSymbol = reelSymbols[randomIndex]
+            reels[i].push(selectedSymbol)
+            reelSymbols.splice(randomIndex,1)
+        }
+    }
+
+    return reels
+};
+
+
+const reels = spin();
+
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
 const bet = getBet(balance, numberOfLines);
