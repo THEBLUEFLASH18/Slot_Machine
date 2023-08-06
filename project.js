@@ -1,6 +1,24 @@
 
 const prompt = require("prompt-sync")();
 
+
+const ROWS = 3;
+const COLS = 3;
+
+const SYMBOLS_COUNT = {
+    "A": 2,
+    "B": 4,
+    "C": 6,
+    "D": 8
+}
+
+const SYMBOL_VALUES = {
+    "A": 5,
+    "B": 4,
+    "C": 3,
+    "D": 2
+}
+
 const deposit = () => {
     while(true){
         /* When this is true the infinite loop will continue until the person corrects the value they entered,
@@ -35,11 +53,11 @@ const getNumberOfLines = () =>{
     }
 };
 
-const getBet = function(balance){
+const getBet = function(balance, lines){
     while(true){
-        const bet = prompt("Enter the total bet: ");
+        const bet = prompt("Enter the bet per line: ");
         const numberBet = parseFloat(bet);
-        if(isNaN(numberBet) || numberBet <=0 || numberBet > balance){
+        if(isNaN(numberBet) || numberBet <=0 || numberBet > (balance / lines)){
         alert("The number of bets is inacurrate!") 
         }
         else{
@@ -57,6 +75,6 @@ scope declaration while this one below is a global scope declaration */
 
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
-const bet = getBet(balance);
+const bet = getBet(balance, numberOfLines);
 
 
