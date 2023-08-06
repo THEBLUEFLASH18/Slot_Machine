@@ -35,9 +35,20 @@ const getNumberOfLines = () =>{
     }
 };
 
-const getBet = (balance) =>{
-    
-}
+const getBet = function(balance){
+    while(true){
+        const bet = prompt("Enter the total bet: ");
+        const numberBet = parseFloat(bet);
+        if(isNaN(numberBet) || numberBet <=0 || numberBet > balance){
+        alert("The number of bets is inacurrate!") 
+        }
+        else{
+            return numberBet
+        }
+    }
+};
+
+
 
 
 
@@ -46,6 +57,6 @@ scope declaration while this one below is a global scope declaration */
 
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
-
+const bet = getBet(balance);
 
 
